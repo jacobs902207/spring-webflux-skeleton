@@ -1,0 +1,24 @@
+repositories {
+    mavenCentral()
+}
+
+ext {
+    nettyVersion = '4.1.45.Final'
+    nettyReactorVersion = '0.9.7.RELEASE'
+    nettyEpollVersion = '4.1.45.Final:linux-x86_64'
+
+    hystrixVersion = '2.2.0.RELEASE'
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':client')
+    implementation project(':data-cache')
+    implementation project(':api-common')
+
+    implementation "io.netty:netty-all:${nettyVersion}"
+    implementation "io.netty:netty-transport-native-epoll:${nettyEpollVersion}"
+    implementation "io.projectreactor.netty:reactor-netty:${nettyReactorVersion}"
+
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}"
+}

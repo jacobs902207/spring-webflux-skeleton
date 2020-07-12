@@ -1,0 +1,15 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'skeleton'
+
+include 'common'
+include 'api-common'
+include 'data'
+include 'data-rdb'
+include 'data-cache'
+include 'client'
+include 'skeleton-api'
