@@ -2,16 +2,29 @@ bootJar.enabled = false
 jar.enabled = true
 
 ext {
-    swaggerVersion = '3.0.0-SNAPSHOT'
+    nettyVersion = '4.1.45.Final'
+    nettyTransportEpollVersion = '4.1.45.Final:linux-x86_64'
+    reactorNettyVersion = '0.9.7.RELEASE'
+
+    swaggerVersion = '3.0.0'
     swaggerUiVersion = '2.10.5'
+    jacksonCoreVersion = '2.10.0'
 }
 
 dependencies {
-    compile project(':common')
+    api project(':common')
 
-    compile "org.springframework.boot:spring-boot-starter-aop"
-    compile "org.springframework.boot:spring-boot-starter-webflux"
+    api "org.springframework.boot:spring-boot-starter-aop"
+    api "org.springframework.boot:spring-boot-starter-webflux"
 
-    compile "io.springfox:springfox-boot-starter:${swaggerVersion}"
-    compile "io.springfox:springfox-swagger-ui:${swaggerUiVersion}"
+    api "io.netty:netty-all:${nettyVersion}"
+    api "io.netty:netty-transport-native-epoll:${nettyTransportEpollVersion}"
+    api "io.projectreactor.netty:reactor-netty:${reactorNettyVersion}"
+
+    api "io.springfox:springfox-boot-starter:${swaggerVersion}"
+    api "io.springfox:springfox-swagger-ui:${swaggerUiVersion}"
+
+    api "com.fasterxml.jackson.core:jackson-core:${jacksonCoreVersion}"
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 }

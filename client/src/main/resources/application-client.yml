@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active: default
+
+api:
+  skeleton:
+    test-api:
+      scheme: https
+      host: skeleton.com
+      port:
+      read-timeout: 5000
+      connection-timeout: 3000
+
+resilience4j.circuitbreaker:
+  instances:
+    legend:
+      registerHealthIndicator: true
+      slidingWindowSize: 20
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowType: TIME_BASED
+      minimumNumberOfCalls: 10
+      waitDurationInOpenState: 50s
+      failureRateThreshold: 50
+---
+spring:
+  profiles: default
+
+api:
+  skeleton:
+    test-api:
+      scheme: https
+      host: skeleton.com
+      port:
+      read-timeout: 5000
+      connection-timeout: 3000
+
+resilience4j.circuitbreaker:
+  instances:
+    legend:
+      registerHealthIndicator: true
+      slidingWindowSize: 20
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowType: TIME_BASED
+      minimumNumberOfCalls: 10
+      waitDurationInOpenState: 50s
+      failureRateThreshold: 50

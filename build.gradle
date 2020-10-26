@@ -1,6 +1,10 @@
 buildscript {
     ext {
+        commonsIoVersion = '2.4'
+        googoleGuavaVersion = '23.4-jre'
         springBootVersion = '2.2.2.RELEASE'
+        gradleDockerPluginVersion = '3.2.5'
+        gradleDependencyManagementPluginVersion = '1.0.7.RELEASE'
     }
 
     repositories {
@@ -8,14 +12,14 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
-        maven { url 'https://oss.sonatype.org/content/groups/public' }
         maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local/" }
+        maven { url 'https://oss.sonatype.org/content/groups/public' }
     }
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:1.0.7.RELEASE")
-        classpath("com.bmuschko:gradle-docker-plugin:3.2.5")
+        classpath("io.spring.gradle:dependency-management-plugin:${gradleDependencyManagementPluginVersion}")
+        classpath("com.bmuschko:gradle-docker-plugin:${gradleDockerPluginVersion}")
     }
 }
 
@@ -29,36 +33,34 @@ subprojects {
     sourceCompatibility = '1.8'
 
     configurations {
-        ext {
-            jacksonVersion = '2.10.0'
-        }
-
         compileOnly {
             extendsFrom annotationProcessor
         }
 
         repositories {
             mavenCentral()
+            maven {
+                url "https://oss.sonatype.org/content/groups/public"
+            }
 
             jcenter()
-            maven { url "https://oss.sonatype.org/content/groups/public" }
-            maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local" }
+            maven {
+                url "http://oss.jfrog.org/artifactory/oss-snapshot-local"
+            }
         }
 
         dependencies {
-            implementation "org.springframework.boot:spring-boot-starter"
-            testImplementation "org.springframework.boot:spring-boot-starter-test"
+            implementation 'org.springframework.boot:spring-boot-starter'
+            testImplementation 'org.springframework.boot:spring-boot-starter-test'
+            implementation 'org.springframework.boot:spring-boot-configuration-processor'
+            implementation 'org.springframework.boot:spring-boot-starter-actuator'
             implementation "org.springframework.boot:spring-boot-configuration-processor"
-            implementation "org.springframework.boot:spring-boot-starter-actuator"
-            compile "org.springframework.boot:spring-boot-configuration-processor"
 
-            compile "commons-io:commons-io:2.4"
-            compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
-            compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
-            compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+            api "commons-io:commons-io:${commonsIoVersion}"
+            api "com.google.guava:guava:${googoleGuavaVersion}"
 
-            compileOnly "org.projectlombok:lombok"
-            annotationProcessor "org.projectlombok:lombok"
+            compileOnly 'org.projectlombok:lombok'
+            annotationProcessor 'org.projectlombok:lombok'
         }
     }
 }

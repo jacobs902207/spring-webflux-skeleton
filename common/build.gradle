@@ -1,6 +1,19 @@
 bootJar.enabled = false
 jar.enabled = true
 
+ext{
+    springDataCommonsVersion = '2.2.3.RELEASE'
+    tomcatUtilVersion = '9.0.38'
+    javaxValidationVersion = '2.0.1.Final'
+    apacheCommonsVersion = '3.9'
+    javaUuidGeneratorVersion = '3.2.0'
+}
+
 dependencies {
-    compile "org.springframework.data:spring-data-commons"
+    api "org.springframework.data:spring-data-commons:${springDataCommonsVersion}"
+    api "org.apache.commons:commons-lang3:${apacheCommonsVersion}"
+
+    implementation "javax.validation:validation-api:${javaxValidationVersion}"
+    implementation "com.fasterxml.uuid:java-uuid-generator:${javaUuidGeneratorVersion}"
+    implementation "org.apache.tomcat:tomcat-util:${tomcatUtilVersion}"
 }

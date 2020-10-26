@@ -1,0 +1,52 @@
+spring:
+  profiles:
+    active: default
+
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    properties:
+      hibernate.generate_statistics: false
+      hibernate.ddl-auto: none
+      hiberbate.id.new_generator_mappings: false
+    show-sql: true
+    hibernate:
+      use-new-id-generator-mappings: false
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+---
+spring:
+  profiles: test
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    properties:
+      hibernate.generate_statistics: true
+      hibernate.ddl-auto: create-drop
+      hiberbate.id.new_generator_mappings: false
+    show-sql: true
+    hibernate:
+      use-new-id-generator-mappings: false
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+---
+spring:
+  profiles: default
+
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    properties:
+      hibernate.generate_statistics: false
+      hibernate.ddl-auto: none
+      hiberbate.id.new_generator_mappings: false
+    show-sql: true
+    hibernate:
+      use-new-id-generator-mappings: false
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy

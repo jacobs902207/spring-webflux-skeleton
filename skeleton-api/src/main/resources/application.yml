@@ -5,28 +5,6 @@ spring:
   profiles:
     active: default
 
-management:
-  metrics:
-    binders:
-      hystrix:
-        enabled: false
-
 ---
 spring:
   profiles: default
-
----
-spring:
-  profiles: dev
-
----
-spring:
-  profiles: sandbox
-
----
-spring:
-  profiles: beta
-
----
-spring:
-  profiles: production

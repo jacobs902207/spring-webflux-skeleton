@@ -1,6 +1,18 @@
 bootJar.enabled = false
 jar.enabled = true
 
+ext {
+    reactorVersion = '3.2.11.RELEASE'
+    javaxPersistenceApiVersion = '2.2'
+    springDataCommonsVersion = '2.2.3.RELEASE'
+}
+
 dependencies {
-    compile project(':api-common')
+    api project(':common')
+
+    api "io.projectreactor:reactor-core:${reactorVersion}"
+    api "io.projectreactor:reactor-test:${reactorVersion}"
+
+    api "javax.persistence:javax.persistence-api:${javaxPersistenceApiVersion}"
+    api "org.springframework.data:spring-data-commons:${springDataCommonsVersion}"
 }

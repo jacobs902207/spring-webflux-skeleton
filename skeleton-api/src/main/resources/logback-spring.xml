@@ -41,28 +41,6 @@
     <logger name="springfox.documentation" level="INFO"/>
     <logger name="org.springframework" level="INFO"/>
 
-    <springProfile name="beta, production">
-        <root level="INFO">
-            <appender-ref ref="consoleAppender"/>
-            <appender-ref ref="fileAppender"/>
-            <appender-ref ref="jsonAppender"/>
-        </root>
-    </springProfile>
-
-    <springProfile name="dev, sandbox">
-        <root level="DEBUG">
-            <appender-ref ref="consoleAppender"/>
-            <appender-ref ref="fileAppender"/>
-            <appender-ref ref="jsonAppender"/>
-        </root>
-    </springProfile>
-
-    <springProfile name="test">
-        <root level="INFO">
-            <appender-ref ref="consoleAppender"/>
-        </root>
-    </springProfile>
-
     <springProfile name="default">
         <root level="DEBUG">
             <appender-ref ref="consoleAppender"/>

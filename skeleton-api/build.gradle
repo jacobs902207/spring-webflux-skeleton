@@ -3,22 +3,19 @@ repositories {
 }
 
 ext {
-    nettyVersion = '4.1.45.Final'
-    nettyReactorVersion = '0.9.7.RELEASE'
-    nettyEpollVersion = '4.1.45.Final:linux-x86_64'
-
-    hystrixVersion = '2.2.0.RELEASE'
+    resilience4jVersion = '1.6.1'
+    springRetryVersion = '1.2.4.RELEASE'
+    hibernateValidatorVersion = '6.1.0.Final'
 }
 
 dependencies {
-    implementation project(':data')
-    implementation project(':client')
-    implementation project(':data-cache')
-    implementation project(':api-common')
+    api project(':client')
+    api project(':data-rdb')
+    api project(':data-cache')
 
-    implementation "io.netty:netty-all:${nettyVersion}"
-    implementation "io.netty:netty-transport-native-epoll:${nettyEpollVersion}"
-    implementation "io.projectreactor.netty:reactor-netty:${nettyReactorVersion}"
+    api "org.hibernate:hibernate-validator:${hibernateValidatorVersion}"
+    api "org.springframework.retry:spring-retry:${springRetryVersion}"
 
-    implementation "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${hystrixVersion}"
+    api "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    api "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}"
 }

@@ -1,7 +1,16 @@
 bootJar.enabled = false
 jar.enabled = true
 
+ext {
+    commonsPoolVersion = '2.8.0'
+    springDataRedisReactiveVersion = '2.2.0.RELEASE'
+}
+
 dependencies {
-    implementation project(':api-common')
-    compile project(':data')
+    api project(':data')
+    api project(':client')
+    api project(':api-common')
+
+    compile "org.apache.commons:commons-pool2:${commonsPoolVersion}"
+    compile "org.springframework.boot:spring-boot-starter-data-redis-reactive:${springDataRedisReactiveVersion}"
 }

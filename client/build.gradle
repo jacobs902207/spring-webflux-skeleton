@@ -1,7 +1,16 @@
 bootJar.enabled = false
 jar.enabled = true
 
+ext {
+    resilience4jVersion = '1.6.1'
+}
+
 dependencies {
-    implementation project(':api-common')
-    compile project(':data')
+    api project(':api-common')
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}"
 }
